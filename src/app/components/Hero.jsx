@@ -19,10 +19,9 @@ const Hero = () => {
                 </div>
             </div>
             <div>
-                <Image src="/assets/images/hero.png" className="w-[1380px] h-[800px]" alt="Hero" />
-            </div>
-            <div className="absolute top-[80px] md:top-[100px] lg:top-[125px] mx-auto w-full px-[10px] md:px-[50px] lg:px-[165px]" >
-                <div className="text-[20px] md:text-[58px] lg:text-[76px] md:leading-[78px] font-bold text-center mx-auto" >
+                <Image src="/assets/images/hero.svg" width={2880} height={1964} alt="Hero" />
+            </div>            <div className="absolute top-[80px] md:top-[100px] lg:top-[125px] mx-auto w-full px-[10px] md:px-[50px] lg:px-[165px]" >
+                <div className="text-[40px] md:text-[58px] lg:text-[76px] md:leading-[78px] font-bold text-center mx-auto" >
                     Truth Has Value. <br />
                     Trade it.
                 </div>
