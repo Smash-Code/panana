@@ -8,7 +8,7 @@ const Topic = () => {
             <div className='bg-[#FFB800] rounded-[6px] text-[12px] px-[10px] py-[2px]' >Product Features</div>
             <div className='text-center mt-[16px] text-[27px] sm:text-[30px] md:text-[40px] md:leading-[48px]' >Trending Topics – Found <br /> Here First!</div>
             <div>
-                <Image src="/assets/images/slide.svg" width={900} height={156} alt="Slider" />
+                <Image src="/assets/images/slide.svg" width={900} height={256} alt="Slider" />
             </div>
             <div className="leading-[24px] text-[12px] md:text-[16px] w-[80%] sm:w-[70%] md:w-[49%] text-center" >
                 The fastest platform for emerging trends. AI-powered agents detect and create markets instantly, ensuring you see the hottest topics before anyone else. Early markets mean early predictions - leading to sharper insights, better forecasts, and a serious edge in knowledge gathering.

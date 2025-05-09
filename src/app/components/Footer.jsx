@@ -12,7 +12,7 @@ const Footer = () => {
                 <FaXTwitter />
                 <FaDiscord />
             </div>
-            <div className="mt-[60px] md:mt-[128px] text-[20px]" >
+            <div className="mt-[60px] text-center md:mt-[128px] text-[12px] sm:text-[16px] md:text-[20px]" >
                 © 2025 Panana. All Rights Reserved.
             </div>
         </div>
