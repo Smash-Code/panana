@@ -3,12 +3,12 @@ import React from 'react'
 
 const Work = () => {
     return (
-        <div className=' pt-[90px] md:pt-[180px] px-[10px]  md:px-[50px] lg:px-[165px]' >
+        <div className=' mx-auto max-w-[1350px] pt-[90px] md:pt-[180px] px-[10px]  md:px-[50px] lg:px-[165px]' >
             <div className='text-[30px] md:text-[50px] lg:text-[64px] font-bold text-center mx-auto' >
                 How it Works
             </div>
             <div className='grid grid-cols-12  mt-[49px] md:mt-[64px] gap-[24px]' >
-                <div className='flex flex-col items-center rounded-[8px] p-[24px] border-2 border-[#FFDF88] bg-[#FFF7D5] col-span-12 md:col-span-6' >
+                <div data-aos="fade-right" className='flex flex-col items-center rounded-[8px] p-[24px] border-2 border-[#FFDF88] bg-[#FFF7D5] col-span-12 md:col-span-6' >
                     {/* heading */}
                     <div className='flex justify-between w-full' >
                         <div className='text-[22px] md:text-[36px] font-bold leading-[36px]' >
@@ -33,7 +33,7 @@ const Work = () => {
 
                 <div className='col-span-12 md:col-span-6 space-y-[24px]' >
                     {/* first box */}
-                    <div className=' grid grid-cols-12 rounded-[8px] p-[24px] border-2 border-[#FFDF88] bg-[#FFF7D5]' >
+                    <div data-aos="fade-left" className=' grid grid-cols-12 rounded-[8px] p-[24px] border-2 border-[#FFDF88] bg-[#FFF7D5]' >
                         <div className='h-full flex flex-col justify-between col-span-12 md:col-span-7' >
                             <div className='text-[12px] px-[10px] bg-[#FFDF88] h-fit w-fit py-[2px] rounded-[6px]' >
                                 Truth
@@ -53,7 +53,7 @@ const Work = () => {
 
                     </div>
                     {/* second box */}
-                    <div className=' grid grid-cols-12 rounded-[8px] p-[24px] border-2 border-[#FFDF88] bg-[#FFF7D5]' >
+                    <div data-aos="fade-left" className=' grid grid-cols-12 rounded-[8px] p-[24px] border-2 border-[#FFDF88] bg-[#FFF7D5]' >
                         <div className='h-full flex flex-col justify-between col-span-12 md:col-span-7' >
                             <div className='text-[12px] px-[10px] bg-[#FFDF88] h-fit w-fit py-[2px] rounded-[6px]' >
                                 Voice
