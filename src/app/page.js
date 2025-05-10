@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div className="overflow-hidden" >
       <Hero />
-      <div className="relative mt-[280px] lg:mt-[96px] xl:mt-[86px]" >
+      <div className="relative mt-[280px] lg:mt-0 top-0 lg:top-[150px] xl:mt-[86px]" >
         <Projects />
       </div>
       <Work />
