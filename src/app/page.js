@@ -26,7 +26,6 @@ export default function Home() {
       </div>
       <Work />
       <Topic />
-
       <GetStarted />
       <Footer />
     </div>

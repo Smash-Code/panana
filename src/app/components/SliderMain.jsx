@@ -1,9 +1,11 @@
 'use client';
 
+
 import { useState, useMemo } from 'react';
 import ImageSlider from '../components/Slider'; // Assuming this path is correct
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa";
+
 
 const initialSliderImages = [
     {
@@ -16,100 +18,120 @@ const initialSliderImages = [
         id: 'img2',
         src: '/assets/images/assets2.svg',
         alt: 'Mountain Valley',
-        description: 'The fastest platform for emerging trends. AI-powered agents detect and create markets instantly, ensuring you see the hottest topics before anyone else. Early markets mean early predictions - leading to sharper insights, better forecasts, and a serious edge in knowledge gathering.'
+        description: 'Discover trends before they go mainstream. Our intelligent system tracks conversations across the digital world, identifying breakout moments in real time. Be the first to act with insights that matter — empowering you to predict, pivot, and profit ahead of the crowd'
     },
     {
         id: 'img3',
         src: '/assets/images/asset3.svg',
+        alt: 'Mountain Valley',
+        description: 'Unlock the speed of foresight. Our platform harnesses AI to monitor shifts across industries, surfacing emerging themes instantly. Stay informed with actionable insights as trends evolve — giving you the clarity to lead, the timing to strike, and the confidence to move fast.'
+    },
+    {
+        id: 'img4',
+        src: '/assets/images/asset1.svg',
         alt: 'Forest Path',
-        description: 'The fastest platform for emerging trends. AI-powered agents detect and create markets instantly, ensuring you see the hottest topics before anyone else. Early markets mean early predictions - leading to sharper insights, better forecasts, and a serious edge in knowledge gathering.'
+        description: 'Get tomorrow’s insights today. Our AI observes patterns across markets and media, detecting early signals with unmatched precision. Turn noise into foresight with a platform built for clarity, speed, and strategy — because knowing first isn’t just smart, it’s a competitive necessity.'
+    },
+    {
+        id: 'img5',
+        src: '/assets/images/assets2.svg',
+        alt: 'Scenic Landscape 1',
+        description: 'Power your decisions with early signals. From global events to online buzz, our tech captures momentum as it builds. Transform raw data into sharp perspective with a system designed for instant awareness — helping you to see the signal from system before it becomes the story.'
     },
 
     // Example with a fourth image, though only first 3 are used by current slider logic for display slots
-    // { 
-    //     id: 'img4', 
+    // {
+    //     id: 'img4',
     //     src: '/assets/images/asset4.png', // Assuming you have asset4.png
-    //     alt: 'Coastal View', 
-    //     description: 'Breathtaking view of the coast with waves crashing against the cliffs.' 
+    //     alt: 'Coastal View',
+    //     description: 'Breathtaking view of the coast with waves crashing against the cliffs.'
     // },
 ];
 
+const NUM_SLIDER_CYCLE_ITEMS = 5; // This MUST match NUM_DISPLAY_ITEMS in Slider.jsx
+
 export default function SliderImg() {
-    const initialIndex = useMemo(() => {
-        if (initialSliderImages.length === 0) return 0;
-        return initialSliderImages.length > 0 ? 1 : 0; // Start with middle slot (index 1)
+    // initialDisplayIndex determines which of the 5 SLOTS is initially centered.
+    // For 5 slots (0, 1, 2, 3, 4), index 2 is the middle.
+    const initialDisplayIndex = useMemo(() => {
+        return Math.floor(NUM_SLIDER_CYCLE_ITEMS / 2);
     }, []);
 
-    const [selectedIndex, setSelectedIndex] = useState(initialIndex);
+    // selectedDisplaySlotIndex refers to which of the 5 visual slots (0-4) is currently "center".
+    const [selectedDisplaySlotIndex, setSelectedDisplaySlotIndex] = useState(initialDisplayIndex);
 
-    // The ImageSlider component displays 3 images. This is the cycle length for selectedIndex.
-    const cycleLength = 3;
-
-    const handleImageClick = (newIndex) => {
-        setSelectedIndex(newIndex);
+    const handleImageClick = (clickedSlotIndex) => {
+        // When an image in a slot is clicked, that slot becomes the new "center".
+        setSelectedDisplaySlotIndex(clickedSlotIndex);
     };
 
     const handlePrev = () => {
         if (initialSliderImages.length === 0) return;
-        setSelectedIndex((prevIndex) => (prevIndex - 1 + cycleLength) % cycleLength);
+        setSelectedDisplaySlotIndex((prevIndex) => (prevIndex - 1 + NUM_SLIDER_CYCLE_ITEMS) % NUM_SLIDER_CYCLE_ITEMS);
     };
 
     const handleNext = () => {
         if (initialSliderImages.length === 0) return;
-        setSelectedIndex((prevIndex) => (prevIndex + 1) % cycleLength);
+        setSelectedDisplaySlotIndex((prevIndex) => (prevIndex + 1) % NUM_SLIDER_CYCLE_ITEMS);
     };
 
     const currentImageForDescription = useMemo(() => {
         if (initialSliderImages.length === 0) return null;
 
-        // selectedIndex refers to the slot in the 3-image display (0, 1, or 2)
-        if (initialSliderImages.length === 1) {
-            return initialSliderImages[0]; // Always the first image if only one
-        }
-        if (initialSliderImages.length === 2) {
-            // Slot 0 shows initialImages[0], Slot 1 shows initialImages[1], Slot 2 shows initialImages[0]
-            return selectedIndex === 1 ? initialSliderImages[1] : initialSliderImages[0];
-        }
-        // For 3 or more images, the 3 display slots map directly to the first 3 initial images
-        // Slot 0 -> initialImages[0], Slot 1 -> initialImages[1], Slot 2 -> initialImages[2]
-        if (selectedIndex >= 0 && selectedIndex < initialSliderImages.length && selectedIndex < 3) {
-            return initialSliderImages[selectedIndex];
-        }
-        // Fallback or if selectedIndex is somehow out of expected range for initialSliderImages < 3
-        // This should ideally not be hit if selectedIndex is always 0, 1, or 2.
-        // And initialSliderImages.length >= 3 maps directly.
-        return initialSliderImages[0]; // Default to first image as a safe fallback
+        // The `ImageSlider` component's `displayImages` array is populated by:
+        // `displayImages[i] = initialSliderImages[i % initialSliderImages.length]`
+        // (assuming `propImages` in `ImageSlider` is `initialSliderImages`).
 
-    }, [selectedIndex, initialSliderImages]);
+        // `selectedDisplaySlotIndex` is the index of the slot that is currently styled as the center (0-4).
+        // The image data in this center slot is `displayImages[selectedDisplaySlotIndex]`.
+        // Therefore, the corresponding image data from the original `initialSliderImages` array is:
+        const actualImageIndexInSourceArray = selectedDisplaySlotIndex % initialSliderImages.length;
+        return initialSliderImages[actualImageIndexInSourceArray];
 
-    // Disable navigation if there's only one unique image or no images
+    }, [selectedDisplaySlotIndex, initialSliderImages]);
+
     const disableNavigation = initialSliderImages.length <= 1;
 
+    const shadowColorRgb = "255, 223, 136";
+    const shadowBlur = '80px';
+    const shadowSpread = '60px';
+    const shadowOpacity = 0.55;
+
     return (
-        <main className="flex min-h-screen flex-col items-center justify-center p-4"> {/* Added a bg color for context */}
-
-            {initialSliderImages.length > 0 ? (
-                <ImageSlider
-                    images={initialSliderImages}
-                    selectedIndex={selectedIndex}
-                    onImageClick={handleImageClick}
+        <main className="flex  flex-col items-center justify-center p-4 overflow-hidden">
+            <div
+                className="relative flex items-center justify-center w-full"
+                style={{ paddingBlock: '10px' }}
+            >
+                <div
+                    className="absolute !h-[150px] !w-[150px]  md:!h-[400px] lg:!h-[250px] lg:!w-[250px] md:!w-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full -z-10"
+                    style={{
+                        background: "rgba(255, 223, 136 , 0.5)",
+                        boxShadow: `0 0 ${shadowBlur} ${shadowSpread} rgba(${shadowColorRgb}, ${shadowOpacity})`,
+                    }}
                 />
-            ) : (
-                <div className="text-white text-xl h-[300px] flex items-center justify-center">
-                    Please provide images for the slider.
-                </div>
-            )}
 
-            {/* Description Section */}
+                {initialSliderImages.length > 0 ? (
+                    <ImageSlider
+                        images={initialSliderImages} // Pass the full array of image data
+                        selectedIndex={selectedDisplaySlotIndex} // This is the index of the *slot* to be centered (0-4)
+                        onImageClick={handleImageClick} // This callback receives the clicked *slot index*
+                    />
+                ) : (
+                    <div className="text-white text-xl h-[300px] flex items-center justify-center">
+                        Please provide images for the slider.
+                    </div>
+                )}
+            </div>
+
             {initialSliderImages.length > 0 && currentImageForDescription && (
-                <div className="mt-8 mb-4 w-full max-w-sm sm:max-w-md md:max-w-xl px-4 text-center">
-                    <p className="leading-[24px] text-[#52505F] text-[12px] md:text-[16px] min-h-[3em]"> {/* min-h to reduce layout shift */}
+                <div className="md:mt-8 mb-4 w-full max-w-sm sm:max-w-lg md:max-w-[56%] px-4 text-center">
+                    <p className="leading-[24px] text-[#52505F] text-[12px] md:text-[16px] min-h-[3em]">
                         {currentImageForDescription.description}
                     </p>
                 </div>
             )}
 
-            {/* Navigation Buttons Section */}
             {initialSliderImages.length > 0 && (
                 <div className="flex items-center mt-[16px] gap-[12px]" >
                     <button
@@ -133,3 +155,83 @@ export default function SliderImg() {
         </main>
     );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const initialSliderImages = [
+//     {
+//         id: 'img1',
+//         src: '/assets/images/asset1.svg',
+//         alt: 'Scenic Landscape 1',
+//         description: 'The fastest platform for emerging trends. AI-powered agents detect and create markets instantly, ensuring you see the hottest topics before anyone else. Early markets mean early predictions - leading to sharper insights, better forecasts, and a serious edge in knowledge gathering.'
+//     },
+//     {
+//         id: 'img2',
+//         src: '/assets/images/assets2.svg',
+//         alt: 'Mountain Valley',
+//         description: 'Discover trends before they go mainstream. Our intelligent system tracks conversations across the digital world, identifying breakout moments in real time. Be the first to act with insights that matter — empowering you to predict, pivot, and profit ahead of the crowd'
+//     },
+//     {
+//         id: 'img3',
+//         src: '/assets/images/asset3.svg',
+//         alt: 'Mountain Valley',
+//         description: 'Unlock the speed of foresight. Our platform harnesses AI to monitor shifts across industries, surfacing emerging themes instantly. Stay informed with actionable insights as trends evolve — giving you the clarity to lead, the timing to strike, and the confidence to move fast.'
+//     },
+//     {
+//         id: 'img4',
+//         src: '/assets/images/asset1.svg',
+//         alt: 'Forest Path',
+//         description: 'Get tomorrow’s insights today. Our AI observes patterns across markets and media, detecting early signals with unmatched precision. Turn noise into foresight with a platform built for clarity, speed, and strategy — because knowing first isn’t just smart, it’s a competitive necessity.'
+//     },
+//     {
+//         id: 'img5',
+//         src: '/assets/images/assets2.svg',
+//         alt: 'Scenic Landscape 1',
+//         description: 'Power your decisions with early signals. From global events to online buzz, our tech captures momentum as it builds. Transform raw data into sharp perspective with a system designed for instant awareness — helping you see the signal before it becomes the story.'
+//     },
+
+//     // Example with a fourth image, though only first 3 are used by current slider logic for display slots
+//     // {
+//     //     id: 'img4',
+//     //     src: '/assets/images/asset4.png', // Assuming you have asset4.png
+//     //     alt: 'Coastal View',
+//     //     description: 'Breathtaking view of the coast with waves crashing against the cliffs.'
+//     // },
+// ];
