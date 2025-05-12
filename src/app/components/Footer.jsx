@@ -11,8 +11,12 @@ const Footer = () => {
                     <Image data-aos="zoom-in" src="/assets/images/PananaFooter.svg" width={760} height={200} alt="Footer Logo" />
                 </div>
                 <div data-aos="fade-up" className="mt-[48px] text-[24px] flex items-center gap-[24px] md:gap-[48px] text-[#585858]" >
-                    <FaXTwitter />
-                    <FaDiscord />
+                    <a href="#" rel="noopener noreferrer">
+                        <FaXTwitter />
+                    </a>
+                    <a href="#" rel="noopener noreferrer">
+                        <FaDiscord />
+                    </a>
                 </div>
                 <div className="mt-[60px] text-center md:mt-[128px] text-[12px] sm:text-[16px] md:text-[20px]" >
                     © 2025 Panana. All Rights Reserved.

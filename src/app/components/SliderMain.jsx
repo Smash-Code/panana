@@ -156,46 +156,6 @@ export default function SliderImg() {
     );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const initialSliderImages = [
 //     {
 //         id: 'img1',
 //         src: '/assets/images/asset1.svg',

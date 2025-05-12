@@ -3,7 +3,7 @@ import React from 'react'
 
 const Work = () => {
     return (
-        <div className=' mx-auto max-w-[1550px] mt-[0px] md:mt-[180px] pt-[90px] md:pt-[180px] px-[10px]  md:px-[50px] lg:px-[90px]' >
+        <div className=' mx-auto max-w-[1550px] mt-[0px] md:mt-[90px] pt-[90px] md:pt-[180px] px-[10px]  md:px-[50px] lg:px-[90px]' >
             <div className='text-[30px] md:text-[50px] lg:text-[64px] font-bold text-center mx-auto' >
                 How it Works
             </div>
@@ -35,7 +35,7 @@ const Work = () => {
                     {/* first box */}
                     <div className='col-span-12 md:col-span-6 space-y-[24px]' >
                         {/* first box */}
-                        <div data-aos="fade-left" className=' grid grid-cols-12 rounded-[8px] p-[24px] border-2 border-[#FFDF88] bg-[#FFF7D5]' >
+                        <div data-aos="fade-left" className=' grid grid-cols-12 gap-[12px] rounded-[8px] p-[24px] border-2 border-[#FFDF88] bg-[#FFF7D5]' >
                             <div className='h-full flex flex-col justify-between col-span-12 md:col-span-8' >
                                 <div className='text-[12px] px-[10px] bg-[#FFDF88] h-fit w-fit py-[2px] rounded-[6px]' >
                                     Truth
@@ -62,7 +62,7 @@ const Work = () => {
                             </div>
                         </div>
                         {/* second box */}
-                        <div data-aos="fade-left" className=' grid grid-cols-12 rounded-[8px] p-[24px] border-2 border-[#FFDF88] bg-[#FFF7D5]' >
+                        <div data-aos="fade-left" className=' grid grid-cols-12 gap-[12px] rounded-[8px] p-[24px] border-2 border-[#FFDF88] bg-[#FFF7D5]' >
                             <div className='h-full flex flex-col justify-between col-span-12 md:col-span-8' >
                                 <div className='text-[12px] px-[10px] bg-[#FFDF88] h-fit w-fit py-[2px] rounded-[6px]' >
                                     Voice

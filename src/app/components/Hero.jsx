@@ -105,7 +105,7 @@ const Hero = () => {
     return (
         <div className="relative">
             {/* header  */}
-            <div className="mx-auto max-w-[1350px] relative ">
+            <div className="mx-auto max-w-[1500px] relative ">
                 <div className="flex bg-[#FFD974] md:!bg-[#FFD974]/10 w-full items-center justify-between absolute h-[65px] px-[10px] md:px-[50px] lg:px-[165px]">
                     <div>
                         <Image src={Logo} width={135} height={29} className="w-auto" />
@@ -115,18 +115,23 @@ const Hero = () => {
                     <div className="hidden md:flex items-center text-[#585858] gap-[8px] md:gap-[24px]">
                         <div
                             onClick={() => scrollToSection('how-it-works')}
-                            className="cursor-pointer hover:text-[#FFB800] transition-colors"
+                            className="cursor-pointer"
                         >
                             How it works
                         </div>
                         <div
                             onClick={() => scrollToSection('benefits')}
-                            className="cursor-pointer hover:text-[#FFB800] transition-colors"
+                            className="cursor-pointer"
                         >
                             Benefit
                         </div>
-                        <FaXTwitter className="text-[24px]" />
-                        <FaDiscord className="text-[24px]" />
+
+                        <a href="#" rel="noopener noreferrer">
+                            <FaXTwitter className="text-[24px]" />
+                        </a>
+                        <a href="#" rel="noopener noreferrer">
+                            <FaDiscord className="text-[24px]" />
+                        </a>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -144,20 +149,24 @@ const Hero = () => {
                 >
                     <div className="flex flex-col items-center text-[#585858] gap-[16px] py-4 px-[10px]">
                         <div
-                            className="py-2 cursor-pointer hover:text-[#FFB800] transition-colors"
+                            className="py-2 cursor-pointer"
                             onClick={() => scrollToSection('how-it-works')}
                         >
                             How it works
                         </div>
                         <div
-                            className="py-2 cursor-pointer hover:text-[#FFB800] transition-colors"
+                            className="py-2 cursor-pointer"
                             onClick={() => scrollToSection('benefits')}
                         >
                             Benefit
                         </div>
                         <div className="flex gap-[24px] py-2">
-                            <FaXTwitter className="text-[24px]" />
-                            <FaDiscord className="text-[24px]" />
+                            <a href="#" rel="noopener noreferrer">
+                                <FaXTwitter className="text-[24px]" />
+                            </a>
+                            <a href="#" rel="noopener noreferrer">
+                                <FaDiscord className="text-[24px]" />
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -165,12 +174,16 @@ const Hero = () => {
             <div className="w-auto h-auto xl:h-[1100px] 2xl:h-[1400px]" >
                 <Image src="/assets/images/hero.svg" width={5880} height={1964} alt="Hero" />
             </div>
-            <div className="absolute  w-full left-1/2 -translate-x-1/2 max-w-[1350px] top-[80px] md:top-[100px] lg:top-[125px] px-[10px] md:px-[50px] lg:px-[165px] xl:px-[0px]" >
+            <div className="absolute flex flex-col items-center justify-center  w-full left-1/2 -translate-x-1/2 max-w-[1350px] top-[80px] md:top-[100px] lg:top-[125px] px-[10px] md:px-[50px] lg:px-[165px] xl:px-[0px]" >
                 <div data-aos="zoom-in" className="text-[40px] md:text-[58px] lg:text-[76px] md:leading-[78px] font-bold text-center mx-auto" >
                     Truth Has Value. <br />
                     Trade it.
                 </div>
-                <div data-aos="zoom-in" className="bg-black text-white w-fit mt-[23px] mx-auto rounded-[8px] px-[20px] md:px-[27px] py-[6px] md:py-[8px]" >Start Trading Now</div>
+                <button data-aos="zoom-in" className="bg-black  text-white w-fit mt-[23px] mx-auto rounded-[8px] px-[20px] md:px-[27px] py-[6px] md:py-[8px]" >
+                    <a href="#" rel="noopener noreferrer">
+                        Start Trading Now
+                    </a>
+                </button>
 
                 <div data-aos="fade-up" >
                     <Image src={HeroItem} width={934} height={599} className="w-full h-auto" alt="Hero" />

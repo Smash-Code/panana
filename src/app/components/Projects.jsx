@@ -77,7 +77,7 @@ const Coin = '/assets/images/Coinbase.svg'
 
 const Projects = () => {
     return (
-        <div className="text-center max-w-[1350px] flex flex-col items-center mx-auto lg:pt-[88px] px-[10px] md:px-[50px] lg:px-[165px]" >
+        <div className="text-center max-w-[1350px] flex flex-col items-center mt-[30px] lg:mt-[2px] mx-auto px-[10px] md:px-[50px] lg:px-[165px]" >
             <div className="text-[14px] md:text-[20px]" >
                 Leading Projects We&apos;re Proud to Back
             </div>
